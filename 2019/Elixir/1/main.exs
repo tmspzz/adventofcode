@@ -7,19 +7,19 @@ defmodule Main do
   def totalFuel() do
     case File.read "input.txt" do
       {:ok, contents} -> 
-	modulesMasses = contents 
-	|> String.split("\n", trim: true)
-      	|> Enum.map(&String.to_integer/1)
-	
-	modulesMasses 
-      	|> Enum.reduce(0, fn(mass, acc) -> acc + fuelForModuleWithMass mass end)
-      	|> fn total -> IO.puts "Total fuel before fuel mass addition: #{total}" end.()
-     	
-	modulesMasses 
-      	|> Enum.reduce(0, fn(mass, acc) -> acc + fuelForModuleWithMassAccountingForFuelMass mass end)
-      	|> fn total -> IO.puts "Total fuel after fuel mass addition: #{total}" end.()
+    modulesMasses = contents 
+    |> String.split("\n", trim: true)
+        |> Enum.map(&String.to_integer/1)
+    
+    modulesMasses 
+        |> Enum.reduce(0, fn(mass, acc) -> acc + fuelForModuleWithMass mass end)
+        |> fn total -> IO.puts "Total fuel before fuel mass addition: #{total}" end.()
+        
+    modulesMasses 
+        |> Enum.reduce(0, fn(mass, acc) -> acc + fuelForModuleWithMassAccountingForFuelMass mass end)
+        |> fn total -> IO.puts "Total fuel after fuel mass addition: #{total}" end.()
       {:error, reason} ->
-	IO.puts("Cannot open input.txt: #{reason}")
+    IO.puts("Cannot open input.txt: #{reason}")
     end
   end
     
