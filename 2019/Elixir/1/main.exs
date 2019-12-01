@@ -8,7 +8,7 @@ defmodule Main do
     case File.read "input.txt" do
       {:ok, contents} -> 
     modulesMasses = contents 
-    |> String.split("\n", trim: true)
+        |> String.split("\n", trim: true)
         |> Enum.map(&String.to_integer/1)
     
     modulesMasses 
